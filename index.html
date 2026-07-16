@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyde | Minimalist Portfolio</title>
+    <title>Cyde | Premium Minecraft Utility</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', 'Roboto Mono', monospace;
         }
 
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
-            --accent-color: #3a86ff;
-            --secondary-color: #8a8a8a;
-            --card-bg: #151515;
+            --bg-color: #0d0d12;
+            --text-color: #e0e0ff;
+            --accent-color: #8a2be2;
+            --secondary-color: #8b8ba0;
+            --card-bg: #161622;
+            --neon-glow: 0 0 15px rgba(138, 43, 226, 0.5);
         }
 
         body {
@@ -26,7 +27,9 @@
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 20%);
         }
 
         .container {
@@ -35,11 +38,15 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
-            padding: 30px 0;
-            position: relative;
-            z-index: 100;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            background: rgba(13, 13, 18, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav {
@@ -49,29 +56,31 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-color);
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #8a2be2, #9370db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .logo:hover {
-            color: var(--accent-color);
+            letter-spacing: 1px;
+            text-shadow: var(--neon-glow);
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 35px;
         }
 
         .nav-link {
             color: var(--secondary-color);
             text-decoration: none;
+            font-weight: 600;
             font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 8px 0;
             position: relative;
         }
 
@@ -82,11 +91,11 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background: linear-gradient(90deg, #8a2be2, #9370db);
             transition: width 0.3s ease;
         }
 
@@ -94,175 +103,247 @@
             width: 100%;
         }
 
-        /* Hero Section */
+        .download-btn {
+            background: linear-gradient(45deg, #8a2be2, #9370db);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: var(--neon-glow);
+            text-transform: uppercase;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+        }
+
+        /* Hero */
         .hero {
-            padding: 100px 0;
+            padding: 120px 0 80px;
             text-align: center;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 800;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1.5px;
-        }
-
-        .hero span {
-            color: var(--accent-color);
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #e0e0ff, #8a2be2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--secondary-color);
             max-width: 700px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            width: 280px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-color);
         }
 
-        .cta-button:hover {
-            background-color: transparent;
+        .feature:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
             color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+            margin-bottom: 20px;
         }
 
-        /* Projects Section */
-        .projects {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 2rem;
+        .feature-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--text-color);
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-color);
+        .feature-desc {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .project-grid {
+        /* Showcase */
+        .showcase {
+            padding: 100px 0;
+            background: rgba(22, 22, 34, 0.5);
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .showcase-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-color);
+        }
+
+        .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .project-card {
-            background-color: var(--card-bg);
+        .showcase-card {
+            background: var(--card-bg);
             border-radius: 12px;
-            padding: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(138, 43, 226, 0.2);
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .project-card:hover {
+        .showcase-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             border-color: var(--accent-color);
+            box-shadow: var(--neon-glow);
         }
 
-        .project-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--accent-color);
+        .card-header {
+            padding: 25px;
+            background: rgba(138, 43, 226, 0.1);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
         }
 
-        .project-title {
-            font-size: 1.3rem;
+        .card-title {
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
+            color: var(--text-color);
         }
 
-        .project-desc {
+        .card-subtitle {
             color: var(--secondary-color);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            font-size: 0.9rem;
         }
 
-        .project-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-feature {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
         }
 
-        .project-link i {
-            transition: transform 0.3s ease;
+        .card-feature i {
+            color: var(--accent-color);
         }
 
-        .project-link:hover i {
-            transform: translateX(5px);
+        /* Pricing */
+        .pricing {
+            padding: 100px 0;
         }
 
-        /* Skills Section */
-        .skills {
-            padding: 80px 0;
+        .pricing-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--text-color);
         }
 
-        .skills-container {
+        .pricing-cards {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .skill-tag {
-            background-color: var(--card-bg);
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px 30px;
+            width: 320px;
+            text-align: center;
+            border: 1px solid rgba(138, 43, 226, 0.2);
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        .skill-tag:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
+        .pricing-card.featured {
+            border-color: var(--accent-color);
+            box-shadow: var(--neon-glow);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: var(--neon-glow);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--secondary-color);
         }
 
         /* Footer */
         footer {
             padding: 60px 0 30px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 60px;
+            background: rgba(13, 13, 18, 0.9);
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 20px;
         }
 
         .social-link {
             color: var(--secondary-color);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
@@ -272,8 +353,11 @@
         }
 
         .copyright {
+            text-align: center;
             color: var(--secondary-color);
             font-size: 0.9rem;
+            padding-top: 30px;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
         }
 
         /* Animations */
@@ -297,16 +381,49 @@
             }
             
             .hero {
-                padding: 70px 0;
+                padding: 80px 0 60px;
             }
             
-            .project-grid {
-                grid-template-columns: 1fr;
+            .features {
+                gap: 20px;
             }
             
-            .skills-container {
-                justify-content: flex-start;
+            .feature {
+                width: 100%;
+                max-width: 350px;
             }
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Glitch effect */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .glitch {
+            animation: glitch 0.5s infinite;
         }
     </style>
 </head>
@@ -315,92 +432,181 @@
         <!-- Header -->
         <header>
             <nav>
-                <a href="#" class="logo fade-in">cyde</a>
+                <a href="#" class="logo fade-in">CYDE</a>
                 <div class="nav-links">
-                    <a href="#projects" class="nav-link fade-in delay-1">Projects</a>
-                    <a href="#skills" class="nav-link fade-in delay-2">Skills</a>
-                    <a href="#contact" class="nav-link fade-in delay-3">Contact</a>
+                    <a href="#features" class="nav-link fade-in delay-1">FEATURES</a>
+                    <a href="#showcase" class="nav-link fade-in delay-2">SHOWCASE</a>
+                    <a href="#pricing" class="nav-link fade-in delay-3">PRICING</a>
+                    <a href="#download" class="download-btn fade-in">DOWNLOAD</a>
                 </div>
             </nav>
         </header>
 
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero">
-            <h1 class="fade-in">Building the <span>future</span> with code</h1>
-            <p class="fade-in delay-1">I create elegant digital experiences that blend form and function. Welcome to my corner of the internet.</p>
-            <a href="#projects" class="cta-button fade-in delay-2">Explore My Work</a>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <h2 class="section-title fade-in">Projects</h2>
-            <div class="project-grid">
-                <div class="project-card fade-in">
-                    <div class="project-icon">
-                        <i class="fas fa-code"></i>
+            <h1 class="fade-in">PREMIUM MINECRAFT UTILITY</h1>
+            <p class="fade-in delay-1">Advanced client with cutting-edge features for competitive gameplay. Undetectable, powerful, and constantly updated.</p>
+            
+            <div class="features" id="features">
+                <div class="feature fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <h3 class="project-title">Nexus Framework</h3>
-                    <p class="project-desc">A modern React framework for building performant web applications with minimal configuration.</p>
-                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-title">ESP & Visuals</h3>
+                    <p class="feature-desc">See players through walls, view item drops, and get full situational awareness.</p>
                 </div>
                 
-                <div class="project-card fade-in delay-1">
-                    <div class="project-icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="feature fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-crosshairs"></i>
                     </div>
-                    <h3 class="project-title">DataViz Pro</h3>
-                    <p class="project-desc">Interactive data visualization tool that transforms complex datasets into beautiful, understandable charts.</p>
-                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-title">Aim Assist</h3>
+                    <p class="feature-desc">Advanced targeting system with customizable smoothness and prediction.</p>
                 </div>
                 
-                <div class="project-card fade-in delay-2">
-                    <div class="project-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="feature fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <h3 class="project-title">FlowTask App</h3>
-                    <p class="project-desc">Productivity application that helps teams manage projects with an intuitive, drag-and-drop interface.</p>
-                    <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    <h3 class="feature-title">Movement</h3>
+                    <p class="feature-desc">Speed, flight, no-slowdown, and advanced mobility options.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <h2 class="section-title fade-in">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-tag fade-in">JavaScript</div>
-                <div class="skill-tag fade-in delay-1">React</div>
-                <div class="skill-tag fade-in delay-2">TypeScript</div>
-                <div class="skill-tag fade-in">Node.js</div>
-                <div class="skill-tag fade-in delay-1">Python</div>
-                <div class="skill-tag fade-in delay-2">UI/UX Design</div>
-                <div class="skill-tag fade-in">Next.js</div>
-                <div class="skill-tag fade-in delay-1">GraphQL</div>
-                <div class="skill-tag fade-in delay-2">Cloud Architecture</div>
+        <!-- Showcase -->
+        <section class="showcase" id="showcase">
+            <h2 class="showcase-title fade-in">FEATURE SHOWCASE</h2>
+            <div class="showcase-grid">
+                <div class="showcase-card fade-in">
+                    <div class="card-header">
+                        <h3 class="card-title">KillAura</h3>
+                        <p class="card-subtitle">Advanced Combat Module</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>360° attack range</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Weapon switching</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Target prioritization</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Anti-cheat bypass</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="showcase-card fade-in delay-1">
+                    <div class="card-header">
+                        <h3 class="card-title">X-Ray</h3>
+                        <p class="card-subtitle">Resource Finding</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Ore highlighting</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Chest ESP</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Mob detection</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Customizable filters</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="showcase-card fade-in delay-2">
+                    <div class="card-header">
+                        <h3 class="card-title">Scaffold</h3>
+                        <p class="card-subtitle">Building Assistant</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Tower placement</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Safe walk</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Rotation control</span>
+                        </div>
+                        <div class="card-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Multi-directional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing" id="pricing">
+            <h2 class="pricing-title fade-in">PRICING PLANS</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card fade-in">
+                    <h3>BASIC</h3>
+                    <div class="price">$9<span>/month</span></div>
+                    <p>Essential features for beginners</p>
+                    <a href="#download" class="download-btn" style="margin-top: 30px; display: inline-block;">GET STARTED</a>
+                </div>
+                
+                <div class="pricing-card featured fade-in delay-1">
+                    <h3>PREMIUM</h3>
+                    <div class="price">$19<span>/month</span></div>
+                    <p>Full feature access + priority support</p>
+                    <a href="#download" class="download-btn" style="margin-top: 30px; display: inline-block;">POPULAR CHOICE</a>
+                </div>
+                
+                <div class="pricing-card fade-in delay-2">
+                    <h3>LIFETIME</h3>
+                    <div class="price">$99<span>/once</span></div>
+                    <p>Permanent access + all future updates</p>
+                    <a href="#download" class="download-btn" style="margin-top: 30px; display: inline-block;">BEST VALUE</a>
+                </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer id="contact">
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+        <footer id="download">
+            <div class="footer-content">
+                <div class="logo">CYDE</div>
+                <a href="#download" class="download-btn glitch" style="font-size: 1.1rem; padding: 15px 35px;">
+                    <i class="fas fa-download"></i> DOWNLOAD NOW
+                </a>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
             </div>
-            <p class="copyright">© 2023 Cyde. All rights reserved.</p>
+            <p class="copyright">© 2023 Cyde. Not affiliated with Mojang or Microsoft. For educational purposes only.</p>
         </footer>
     </div>
 
     <script>
-        // Smooth scrolling for anchor links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
                     window.scrollTo({
@@ -410,35 +616,25 @@
                 }
             });
         });
-        
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
+
+        // Glitch effect on download button
+        const downloadBtn = document.querySelector('.glitch');
+        setInterval(() => {
+            downloadBtn.classList.toggle('glitch');
+            setTimeout(() => downloadBtn.classList.toggle('glitch'), 100);
+        }, 3000);
+
+        // Fade in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
                     entry.target.classList.add('fade-in');
                 }
             });
-        }, observerOptions);
-        
-        // Observe elements for animation
-        document.querySelectorAll('.project-card, .skill-tag').forEach(el => {
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature, .showcase-card, .pricing-card').forEach(el => {
             observer.observe(el);
-        });
-        
-        // Add hover effect to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
         });
     </script>
 </body>
