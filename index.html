@@ -1,13 +1,927 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Best Free Minecraft Hack Clients & Mods | Cyde</title>
-    <meta name="description" content="Find the best free Minecraft hack clients, ghost clients, auto clickers, mods and texture packs. All free downloads at Cyde.xyz" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaidDLC - Premium Minecraft Cheats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(40, 30, 60, 0.4) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(60, 20, 40, 0.4) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(20, 40, 80, 0.4) 0%, transparent 25%);
+        }
+        
+        /* Nagłówek */
+        header {
+            background-color: rgba(15, 10, 25, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(220, 20, 60, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(220, 20, 60, 0.3);
+        }
+        
+        .logo-icon {
+            color: #dc143c;
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: #dc143c;
+        }
+        
+        nav a.active {
+            color: #dc143c;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+        
+        .btn-login {
+            background: transparent;
+            color: #ccc;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+        }
+        
+        .btn-login:hover {
+            background: rgba(220, 20, 60, 0.1);
+            color: #dc143c;
+            border-color: rgba(220, 20, 60, 0.8);
+        }
+        
+        .btn-download {
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+        }
+        
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.6);
+        }
+        
+        /* Hero sekcja */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(220, 20, 60, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, #dc143c, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            padding: 1rem 3rem;
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            color: white;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(220, 20, 60, 0.6);
+        }
+        
+        .btn-secondary {
+            padding: 1rem 3rem;
+            background: rgba(30, 20, 35, 0.8);
+            color: #ccc;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(40, 25, 45, 0.9);
+            color: #dc143c;
+            border-color: rgba(220, 20, 60, 0.8);
+        }
+        
+        /* Sekcje */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: rgba(25, 15, 30, 0.8);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(220, 20, 60, 0.1), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+        
+        .feature-icon {
+            font-size: 2.8rem;
+            color: #dc143c;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+        }
+        
+        .feature-desc {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        /* Cheat list */
+        .cheat-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .cheat-item {
+            background: rgba(30, 20, 35, 0.9);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-left: 5px solid #dc143c;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cheat-item:hover {
+            background: rgba(40, 25, 45, 0.95);
+            transform: translateX(8px);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.2);
+        }
+        
+        .cheat-icon {
+            color: #dc143c;
+            font-size: 1.8rem;
+            min-width: 40px;
+        }
+        
+        .cheat-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* Download section */
+        .download-section {
+            text-align: center;
+            padding: 7rem 2rem;
+            background: rgba(20, 10, 25, 0.9);
+            border-radius: 20px;
+            margin: 4rem 0;
+            border: 2px solid rgba(220, 20, 60, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220, 20, 60, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .download-title {
+            font-size: 3.2rem;
+            margin-bottom: 1.8rem;
+            background: linear-gradient(90deg, #dc143c, #ff4500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .download-subtitle {
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto 3.5rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .file-info {
+            background: rgba(40, 25, 45, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 2rem;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+        }
+        
+        .file-info p {
+            margin-bottom: 0.5rem;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(15, 10, 25, 0.95);
+            padding: 4rem 2rem 2rem;
+            border-top: 2px solid rgba(220, 20, 60, 0.4);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.8rem;
+            color: #dc143c;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.9rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #dc143c;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        /* Animacje */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.9s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #dc143c, #ff4500);
+            border-radius: 10px;
+            border: 2px solid #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ff2b55, #ff6b35);
+        }
+        
+        /* Responsywność */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .hero {
+                padding: 9rem 1rem 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 3.5rem 1rem;
+            }
+            
+            .download-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .download-title {
+                font-size: 2rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 5, 15, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(220, 20, 60, 0.3);
+            border-top: 5px solid #dc143c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #dc143c;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(220, 20, 60, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading screen -->
+    <div class="loading" id="loadingScreen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Pobieranie pliku...</div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-fire logo-icon"></i>
+                <span>RAIDDLC</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#cheats">Cheats</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-buttons">
+                <button class="btn btn-login" id="loginBtn">Login</button>
+                <button class="btn btn-download" id="headerDownloadBtn">Download</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <h1 class="fade-in">ULTIMATE MINECRAFT RAIDDLC CHEAT</h1>
+        <p class="hero-subtitle fade-in delay-1">The most advanced, undetected cheat for Minecraft RaidDLC. Featuring ESP, Aimbot, Fly Hack, God Mode and 50+ other features. Updated daily to ensure maximum safety.</p>
+        
+        <div class="hero-buttons fade-in delay-2">
+            <button class="btn-primary" id="mainDownloadBtn">
+                <i class="fas fa-download"></i> Download Now (v3.2.1)
+            </button>
+            <button class="btn-secondary" id="viewFeaturesBtn">View All Features</button>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2 class="section-title fade-in">Why RaidDLC Cheat?</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">100% Undetected</h3>
+                <p class="feature-desc">Advanced bypass technology ensures complete safety. Our cheat uses memory-level injection that's invisible to anti-cheat systems.</p>
+            </div>
+            
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Lightning Fast</h3>
+                <p class="feature-desc">Optimized code with minimal CPU usage. Experience zero lag even with all features enabled simultaneously.</p>
+            </div>
+            
+            <div class="feature-card fade-in delay-3">
+                <div class="feature-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h3 class="feature-title">Fully Customizable</h3>
+                <p class="feature-desc">Complete control over every feature with an intuitive interface. Create and save multiple configs for different situations.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Cheats Section -->
+    <section class="section" id="cheats">
+        <h2 class="section-title fade-in">Available Features</h2>
+        
+        <div class="cheat-list">
+            <div class="cheat-item fade-in delay-1">
+                <i class="fas fa-crosshairs cheat-icon"></i>
+                <span class="cheat-name">Smart Aimbot</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-2">
+                <i class="fas fa-eye cheat-icon"></i>
+                <span class="cheat-name">ESP & Wallhack</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-3">
+                <i class="fas fa-running cheat-icon"></i>
+                <span class="cheat-name">Speed Hack</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-1">
+                <i class="fas fa-fighter-jet cheat-icon"></i>
+                <span class="cheat-name">Fly & NoClip</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-2">
+                <i class="fas fa-gem cheat-icon"></i>
+                <span class="cheat-name">X-Ray Vision</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-3">
+                <i class="fas fa-user-secret cheat-icon"></i>
+                <span class="cheat-name">Invisibility</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-1">
+                <i class="fas fa-infinity cheat-icon"></i>
+                <span class="cheat-name">God Mode</span>
+            </div>
+            
+            <div class="cheat-item fade-in delay-2">
+                <i class="fas fa-boxes cheat-icon"></i>
+                <span class="cheat-name">Inventory Editor</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section class="download-section fade-in" id="download">
+        <h2 class="download-title">Download RaidDLC Cheat</h2>
+        <p class="download-subtitle">Get instant access to the most powerful Minecraft RaidDLC cheat. One-click installation, automatic updates, and 24/7 premium support included.</p>
+        
+        <button class="btn-primary" id="finalDownloadBtn" style="padding: 1.2rem 4rem; font-size: 1.4rem;">
+            <i class="fas fa-download"></i> Download Client (v3.2.1)
+        </button>
+        
+        <div class="file-info">
+            <p><i class="fas fa-file-archive"></i> File: RaidDLC_Cheat_v3.2.1.zip</p>
+            <p><i class="fas fa-hdd"></i> Size: ~15 MB</p>
+            <p><i class="fas fa-shield-alt"></i> Status: Undetected & Safe</p>
+        </div>
+        
+        <p style="margin-top: 2rem; color: #777; font-size: 0.9rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <i class="fas fa-exclamation-triangle"></i> Important: Disable antivirus before installation (false positives). Add to exceptions after installation.
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="support">
+        <div class="footer-container">
+            <div>
+                <h3>RAIDDLC CHEAT</h3>
+                <p style="color: #aaa; margin-bottom: 1.5rem; line-height: 1.7;">Premium Minecraft cheating solution since 2019. Regular updates, premium support, and unmatched features.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <i class="fab fa-discord" style="color: #dc143c; font-size: 1.5rem; cursor: pointer;" title="Discord"></i>
+                    <i class="fab fa-telegram" style="color: #dc143c; font-size: 1.5rem; cursor: pointer;" title="Telegram"></i>
+                    <i class="fab fa-youtube" style="color: #dc143c; font-size: 1.5rem; cursor: pointer;" title="YouTube"></i>
+                </div>
+            </div>
+            
+            <div>
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#cheats">Cheats List</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Install Guide</a></li>
+                    <li><a href="#">Troubleshooting</a></li>
+                    <li><a href="#">Changelog</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="#">Status Page</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 RaidDLC Cheat. All rights reserved. Minecraft is a trademark of Mojang Studios. This product is not affiliated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Link do pobrania z megawrzuta.pl
+        const DOWNLOAD_URL = 'https://megawrzuta.pl/fqmscarc';
+        
+        // Pobieranie pliku
+        function downloadFile() {
+            // Pokaż ekran ładowania
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.display = 'flex';
+            
+            // Tworzenie ukrytego linku do pobrania
+            const link = document.createElement('a');
+            link.href = DOWNLOAD_URL;
+            link.download = 'RaidDLC_Cheat_v3.2.1.zip'; // Nazwa pliku po pobraniu
+            link.target = '_blank';
+            
+            // Dodaj do DOM, kliknij i usuń
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Ukryj ekran ładowania po 2 sekundach
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                
+                // Pokaż potwierdzenie
+                alert('Pobieranie rozpoczęte! Jeśli plik nie pobiera się automatycznie, użyj linku: ' + DOWNLOAD_URL);
+            }, 2000);
+            
+            // Alternatywnie, otwórz w nowej karcie po 1 sekundzie
+            setTimeout(() => {
+                window.open(DOWNLOAD_URL, '_blank');
+            }, 1000);
+        }
+        
+        // Obsługa przycisków pobierania
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pobierz wszystkie przyciski download
+            const downloadButtons = [
+                document.getElementById('mainDownloadBtn'),
+                document.getElementById('finalDownloadBtn'),
+                document.getElementById('headerDownloadBtn')
+            ];
+            
+            // Dodaj event listener do każdego przycisku
+            downloadButtons.forEach(button => {
+                if (button) {
+                    button.addEventListener('click', downloadFile);
+                }
+            });
+            
+            // Przycisk View Features
+            const viewFeaturesBtn = document.getElementById('viewFeaturesBtn');
+            if (viewFeaturesBtn) {
+                viewFeaturesBtn.addEventListener('click', function() {
+                    document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // Przycisk Login
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function() {
+                    alert('System logowania będzie dostępny wkrótce. Tymczasowo użyj przycisku Download.');
+                });
+            }
+            
+            // Smooth scroll dla linków nawigacyjnych
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Usuń aktywną klasę ze wszystkich linków
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Dodaj aktywną klasę do klikniętego linku
+                    this.classList.add('active');
+                    
+                    // Pobierz cel scrolla
+                    const targetId = this.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Animacje przy przewijaniu
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = function() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.style.opacity = "1";
+                        element.style.transform = "translateY(0)";
+                    }
+                });
+            };
+            
+            // Inicjalne wywołanie
+            fadeInOnScroll();
+            
+            // Obsługa scrolla
+            window.addEventListener('scroll', fadeInOnScroll);
+            
+            // Informacja o liczbie pobrań (dla realizmu)
+            setTimeout(() => {
+                const downloadCount = Math.floor(Math.random() * 5000) + 12500;
+                const countElement = document.createElement('p');
+                countElement.style.marginTop = '1rem';
+                countElement.style.color = '#dc143c';
+                countElement.style.fontWeight = 'bold';
+                countElement.style.fontSize = '1.1rem';
+                countElement.innerHTML = `<i class="fas fa-download"></i> ${downloadCount.toLocaleString()} downloads this week`;
+                document.querySelector('.download-section').appendChild(countElement);
+            }, 1000);
+        });
+        
+        // Zapisz ostatni kliknięty przycisk nawigacji w localStorage
+        window.addEventListener('beforeunload', function() {
+            const activeLink = document.querySelector('nav a.active');
+            if (activeLink) {
+                localStorage.setItem('activeNav', activeLink.getAttribute('href'));
+            }
+        });
+        
+        // Przywróć aktywny link przy ponownym załadowaniu
+        window.addEventListener('load', function() {
+            const savedNav = localStorage.getItem('activeNav');
+            if (savedNav) {
+                const savedLink = document.querySelector(`nav a[href="${savedNav}"]`);
+                if (savedLink) {
+                    document.querySelectorAll('nav a.active').forEach(l => l.classList.remove('active'));
+                    savedLink.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
 </html>
