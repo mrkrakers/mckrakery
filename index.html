@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>McCheats — Best Free Minecraft Hack Clients</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red-deep: #7a0000;
+      --red-dark: #990000;
+      --red-mid: #b91c1c;
+      --red-bright: #ef4444;
+      --red-glow: #ff2222;
+      --red-light: #fca5a5;
+      --bg-dark: #0d0000;
+      --bg-card: #1a0000;
+      --bg-card2: #220000;
+      --border: #5a0000;
+      --text-main: #f1f1f1;
+      --text-muted: #c0a0a0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---- BACKGROUND GRID ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(180,0,0,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180,0,0,0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ---- NAVBAR ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,0,0,0.92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--red-bright);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo svg { width: 28px; height: 28px; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--red-bright); }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 80px 2rem 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(185,28,28,0.15);
+      border: 1px solid rgba(185,28,28,0.4);
+      color: var(--red-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, var(--red-light) 50%, var(--red-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--red-bright);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ---- SECTION ---- */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 2rem 60px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .section-title span { color: var(--red-bright); }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    /* ---- CARDS GRID ---- */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--red-mid);
+      box-shadow: 0 8px 30px rgba(185,28,28,0.2);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: rgba(185,28,28,0.15);
+      border: 1px solid rgba(185,28,28,0.3);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .tag-green  { background: rgba(22,163,74,0.2);  color: #4ade80; border: 1px solid rgba(22,163,74,0.3); }
+    .tag-yellow { background: rgba(202,138,4,0.2);  color: #facc15; border: 1px solid rgba(202,138,4,0.3); }
+    .tag-red    { background: rgba(185,28,28,0.2);  color: #f87171; border: 1px solid rgba(185,28,28,0.3); }
+    .tag-blue   { background: rgba(37,99,235,0.2);  color: #60a5fa; border: 1px solid rgba(37,99,235,0.3); }
+    .tag-purple { background: rgba(124,58,237,0.2); color: #c084fc; border: 1px solid rgba(124,58,237,0.3); }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .version-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .version-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      flex-shrink: 0;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, var(--red-mid), var(--red-deep));
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-download:hover {
+      opacity: 0.9;
+      transform: scale(1.04);
+      box-shadow: 0 0 18px rgba(239,68,68,0.5);
+    }
+
+    .btn-download svg { width: 14px; height: 14px; }
+
+    /* ---- FEATURED CARD ---- */
+    .card-featured {
+      border-color: var(--red-mid);
+      box-shadow: 0 0 20px rgba(185,28,28,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-featured::before {
+      content: 'POPULAR';
+      position: absolute;
+      top: 14px; right: -22px;
+      background: var(--red-mid);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 3px 28px;
+      transform: rotate(45deg);
+      letter-spacing: 1px;
+    }
+
+    /* ---- DISCLAIMER ---- */
+    .disclaimer {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto 60px;
+      padding: 0 2rem;
+    }
+
+    .disclaimer-box {
+      background: rgba(120,0,0,0.12);
+      border: 1px solid rgba(180,28,28,0.35);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .disclaimer-box .icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .disclaimer-box strong { color: var(--red-light); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 30px 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--red-bright); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 50px 1.2rem 40px; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    /* ---- GLOW ORBS ---- */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 500px; height: 500px; background: #b91c1c; top: -100px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: #7f1d1d; bottom: 100px; right: -80px; }
+  </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>
+    McCheats
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#clients">Clients</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">
+    <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+    Free Downloads — No Ads, No Surveys
+  </div>
+  <h1>Best Free Minecraft<br/>Hack Clients & Mods</h1>
+  <p>Download the most popular free Minecraft hack clients, mods and utilities. All files are scanned and verified. Supports <strong style="color:#f87171">1.21.4</strong>.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">50K+</div>
+      <div class="stat-label">Downloads</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">12+</div>
+      <div class="stat-label">Clients</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Free</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1.21.4</div>
+      <div class="stat-label">Latest Version</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-title">Hack <span>Clients</span></div>
+  <div class="section-sub">Top-rated free Minecraft hack clients with the latest features</div>
+
+  <div class="cards-grid">
+
+    <!-- RaidDLC Client Crack -->
+    <div class="card card-featured">
+      <div class="card-header">
+        <div class="card-icon">💀</div>
+        <div class="card-tags">
+          <span class="tag tag-green">FREE</span>
+          <span class="tag tag-red">CRACK</span>
+        </div>
+      </div>
+      <h3>RaidDLC Client Crack</h3>
+      <p>The most powerful cracked client from RaidDLC. Includes all premium features unlocked, custom bypasses and a sleek red-themed GUI.</p>
+      <div class="card-footer">
+        <div class="version-badge">
+          <div class="version-dot"></div>
+          1.21.4
+        </div>
+        <a href="https://megawrzuta.pl/fqmscarc" class="btn-download" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <!-- Wurst -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚡</div>
+        <div class="card-tags">
+          <span class="tag tag-green">FREE</span>
+          <span class="tag tag-blue">OPEN SOURCE</span>
+        </div>
+      </div>
+      <h3>Wurst Client</h3>
+      <p>One of the most feature-rich open-source hack clients available. Includes over 100+ mods, AutoFarm, KillAura, and more.</p>
+      <div class="card-footer">
+        <div class="version-badge">
+          <div class="version-dot"></div>
+          1.7.2 - 26.2
+        </div>
+        <a href="https://www.wurstclient.net/download/" class="btn-download" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+    <!-- LiquidBounce -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💧</div>
+        <div class="card-tags">
+          <span class="tag tag-green">FREE</span>
+          <span class="tag tag-blue">OPEN SOURCE</span>
+        </div>
+      </div>
+      <h3>LiquidBounce</h3>
+      <p>A free, open-source Fabric-based client with a huge variety of modules. Popular for survival servers and minigames.</p>
+      <div class="card-footer">
+        <div class="version-badge">
+          <div class="version-dot"></div>
+          Every Version
+        </div>
+        <a href="https://liquidbounce.net/download" class="btn-download" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-box">
+    <span class="icon">⚠️</span>
+    <div>
+      <strong>Disclaimer:</strong> McCheats is not affiliated with Mojang Studios or the official Minecraft brand.
+      Use clients at your own risk — you may be banned from servers. Always scan files before running them.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="#">McCheats</a> — For educational purposes only. Not affiliated with Mojang Studios.</p>
+  <p style="margin-top:6px;">Minecraft version supported: <strong style="color:#f87171">1.21.4</strong></p>
+</footer>
+
+</body>
+</html>
